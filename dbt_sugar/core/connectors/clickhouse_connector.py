@@ -40,7 +40,7 @@ class ClickhouseConnector(BaseConnector):
             port=connection_params.get("port", str()),
         )
         logger.info(f"connectionurl={self.connection_url}")
-        conurl=f"clickhouse://{os.getenv('DB_USER', str())}:{os.getenv('DB_PASSWORD', str())}@{os.getenv('DB_HOST', str())}:9000/internal_analytics"
+        conurl=f"clickhouse+native://{os.getenv('DB_USER', str())}:{os.getenv('DB_PASSWORD', str())}@{os.getenv('DB_HOST', str())}:9000/internal_analytics"
         self.connection_url=conurl
         logger.info(f"connection_url={conurl}")
         self.engine = sqlalchemy.create_engine(self.connection_url)
