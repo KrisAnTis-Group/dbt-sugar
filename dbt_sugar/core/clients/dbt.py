@@ -29,7 +29,6 @@ class PostgresDbtProfilesModel(BaseModel):
     host: str
     port: int
 
-
 class SnowflakeDbtProfilesModel(BaseModel):
     """Snowflake Dbt credentials validation model."""
 
