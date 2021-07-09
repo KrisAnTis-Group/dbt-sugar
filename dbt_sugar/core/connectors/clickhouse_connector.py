@@ -6,6 +6,7 @@ Module dependent of the base connector.
 from typing import Dict
 
 import sqlalchemy
+import os
 
 from dbt_sugar.core.connectors.base import BaseConnector
 from dbt_sugar.core.logger import GLOBAL_LOGGER as logger
@@ -39,7 +40,7 @@ class ClickhouseConnector(BaseConnector):
             port=connection_params.get("port", str()),
         )
         logger.info(f"connectionurl={self.connection_url}")
-        conurl=f"clickhouse://{connection_params.get('user', str())}:{connection_params.get('password', str())}@{connection_params.get('host', str())}:{connection_params.get('port', str())}/{connection_params.get('database', str())}"
+        conurl=f"clickhouse://{os.getenv('DB_USER', str())}:{os.getenv('DB_PASSWORD', str())}@{os.getenv('DB_HOST', str())}:9000/internal_analytics"
         self.connection_url=conurl
         logger.info(f"connection_url={conurl}")
         self.engine = sqlalchemy.create_engine(self.connection_url)
