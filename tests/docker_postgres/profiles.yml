@@ -2,7 +2,7 @@ dbt_sugar_test:
   target: dev
   outputs:
     dev:
-      type: postgres
+      type: clickhouse
       host: localhost
       user: dbt_sugar_test_user
       pass: magical_password

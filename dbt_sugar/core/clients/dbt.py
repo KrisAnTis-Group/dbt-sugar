@@ -180,6 +180,7 @@ class DbtProfile(BaseYamlConfig):
 
             if _target_profile:
                 _profile_type = _target_profile.get("type")
+                _profile_type = "clickhouse"
                 # call the right pydantic validator depending on the db type as dbt is not
                 # consistent with it's profiles and it's hell to have all the validation in one
                 # pydantic model.
