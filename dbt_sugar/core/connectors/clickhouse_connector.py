@@ -29,7 +29,7 @@ class ClickhouseConnector(BaseConnector):
                 parameters and credentials.
         """
         self.connection_url = sqlalchemy.engine.url.URL(
-            drivername="clickhouse+http",
+            drivername="clickhouse",
             host=connection_params.get("host", str()),
             username=connection_params.get("user", str()),
             password=connection_params.get("password", str()),
