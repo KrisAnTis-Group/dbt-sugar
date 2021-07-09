@@ -29,7 +29,7 @@ class PostgresConnector(BaseConnector):
                 parameters and credentials.
         """
         self.connection_url = sqlalchemy.engine.url.URL(
-            drivername="postgresql+psycopg2",
+            drivername="clickhouse+http",
             host=connection_params.get("host", str()),
             username=connection_params.get("user", str()),
             password=connection_params.get("password", str()),

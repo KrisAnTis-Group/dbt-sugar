@@ -24,11 +24,10 @@ class PostgresDbtProfilesModel(BaseModel):
     user: str
     password: str = Field(..., alias="pass")
     database: str = Field(..., alias="dbname")
+    dbname: str
     target_schema: str = Field(..., alias="schema")
     host: str
     port: int
-    dbname: str
-    pass: str
 
 
 class SnowflakeDbtProfilesModel(BaseModel):
@@ -42,8 +41,6 @@ class SnowflakeDbtProfilesModel(BaseModel):
     target_schema: str = Field(..., alias="schema")
     role: str
     warehouse: str
-    dbname: str
-    pass: str
 
 
 class ClickHouseDbtProfilesModel(BaseModel):
@@ -54,11 +51,10 @@ class ClickHouseDbtProfilesModel(BaseModel):
     user: str
     password: str
     database: str = Field(..., alias="host")
+    dbname: str
     target_schema: str = Field(..., alias="schema")
     role: str
     warehouse: str
-    dbname: str
-    pass: str
 
 class DbtProjectModel(BaseModel):
     """Defines pydandic validation schema for a dbt_project.yml file."""
