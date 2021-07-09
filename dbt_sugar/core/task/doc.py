@@ -16,6 +16,7 @@ from dbt_sugar.core.config.config import DbtSugarConfig
 from dbt_sugar.core.connectors.postgres_connector import PostgresConnector
 from dbt_sugar.core.connectors.redshift_connector import RedshiftConnector
 from dbt_sugar.core.connectors.snowflake_connector import SnowflakeConnector
+from dbt_sugar.core.connectors.clickhouse_connector import ClickhouseConnector
 from dbt_sugar.core.flags import FlagParser
 from dbt_sugar.core.logger import GLOBAL_LOGGER as logger
 from dbt_sugar.core.task.base import MODEL_NOT_DOCUMENTED, BaseTask
@@ -28,6 +29,7 @@ DB_CONNECTORS = {
     "postgres": PostgresConnector,
     "snowflake": SnowflakeConnector,
     "redshift": RedshiftConnector,
+    "clickhouse": ClickhouseConnector,
 }
 PRIMARY_KEYS_TESTS = ["unique", "not_null"]
 

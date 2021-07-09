@@ -42,6 +42,18 @@ class SnowflakeDbtProfilesModel(BaseModel):
     warehouse: str
 
 
+class ClickHouseDbtProfilesModel(BaseModel):
+    """Clickhouse Dbt credentials validation model."""
+
+    type: str
+    account: str
+    user: str
+    password: str
+    database: str = Field(..., alias="host")
+    target_schema: str = Field(..., alias="schema")
+    role: str
+    warehouse: str
+
 class DbtProjectModel(BaseModel):
     """Defines pydandic validation schema for a dbt_project.yml file."""
 
@@ -175,7 +187,8 @@ class DbtProfile(BaseYamlConfig):
                     _target_profile = SnowflakeDbtProfilesModel(**_target_profile)
                 elif _profile_type == "postgres" or "redshift":
                     _target_profile = PostgresDbtProfilesModel(**_target_profile)
-
+                elif _profile_type == "clickhouse":
+                    _target_profile = ClickHouseDbtProfilesModel(**_target_profile)
                 # if we don't manage to read the db type for some reason.
                 elif _profile_type is None:
                     raise ProfileParsingError(
